@@ -40,6 +40,12 @@ h1 {
    color: var(--darkGrey);
 }
 
+h2 {
+   font-size: 1.5rem;
+   font-weight: 600px;
+   color: var(--darkGrey);
+}
+
 h3 {
    font-size: 1.1rem;
    font-weight: 600;
