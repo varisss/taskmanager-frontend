@@ -14,10 +14,10 @@ const Headbar: React.FC<Prop> = ({ header }) => {
     const history = useHistory();
 
     return (
-        <IconContext.Provider value={{ color: "black" }}>
+        <IconContext.Provider value={{ color: "var(--darkishArancia)" }}>
             <Wrapper>
                 <Content>
-                    <IoIosArrowRoundBack size='64px' onClick={() => { history.go(-1) }} />
+                    <IoIosArrowRoundBack size='44px' onClick={() => { history.go(-1) }} />
                     <h2>{header}</h2>
                     <IoMdPeople size='44px' />
                 </Content>

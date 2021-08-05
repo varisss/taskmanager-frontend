@@ -15,9 +15,11 @@ export const Content = styled.div`
     justify-content: flex-start;
     max-width: var(--maxWidth);
     margin: 0 auto;
-    padding: 10px 0px;
+    padding: 15px 0px;
     
     h2 {
+        margin-top: 20px;
+        margin-left: 8px;
         font-size: var(--fontBig);
         overflow: auto;
     };

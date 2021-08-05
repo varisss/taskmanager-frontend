@@ -15,7 +15,7 @@ const FormHeadbar: React.FC<Prop> = ({ header }) => {
     return (
         <Wrapper>
             <Content>
-                <IoIosClose color='black' size='48px' onClick={() => { history.go(-1) }} />
+                <IoIosClose color="var(--darkishArancia)" size='48px' onClick={() => { history.go(-1) }} />
                 <h2>{header}</h2>
             </Content>
         </Wrapper>

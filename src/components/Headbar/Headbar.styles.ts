@@ -15,10 +15,10 @@ export const Content = styled.div`
     justify-content: space-between;
     max-width: var(--maxWidth);
     margin: 0 auto;
-    padding: 10px 0px;
+    padding: 15px 0px;
     
     h2 {
-        margin: 0 20px;
+        margin: 10px 20px 0px 20px;
         font-size: var(--fontBig);
         overflow: auto;
     };
