@@ -11,47 +11,47 @@
 }
 
 * {
- box-sizing: border-box;
- font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 .main-title {
-   text-align: center;
-   margin: 100px 0px 30px 0px;
+  text-align: center;
+  margin: 100px 0px 30px 0px;
 }
 
 .project {
-   padding: 20px;
-   margin: 20px;
-   background-color: var(--white);
-   border-radius: 20px;
-   text-align: center;
+  padding: 20px;
+  margin: 20px;
+  background-color: var(--white);
+  border-radius: 20px;
+  text-align: center;
 }
 
 body {
- margin: 0;
- padding: 0;
- background-color: #ccc;
+  margin: 0;
+  padding: 0;
+  background-color: #ccc;
 }
 
 h1 {
-   font-size: 2rem;
-   font-weight: 600;
-   color: var(--darkGrey);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--darkGrey);
 }
 
 h2 {
-   font-size: 1.5rem;
-   font-weight: 600px;
-   color: var(--darkGrey);
+  font-size: 1.5rem;
+  font-weight: 600px;
+  color: var(--darkGrey);
 }
 
 h3 {
-   font-size: 1.1rem;
-   font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 p {
-   font-size: 1rem;
-   color: var(--darkGrey);
+  font-size: 1rem;
+  color: var(--darkGrey);
 }
