@@ -10,14 +10,13 @@ import SingleProject from './components/Project/SingleProject';
 import CreateProject from './components/CreateProject';
 
 const App: React.FC = () => {
-    const [projectId, setProjectId] = useState('test12345');
+    const [projectId, setProjectId] = useState('');
+    console.log(projectId);
     // project id will be set when the user clicks on a project
     // in the project list
 
     // SingleProduct will probably take in the project id
     // then make an api call to get the project, then render it
-
-    // 
 
     return (
         <Router>
@@ -25,26 +24,18 @@ const App: React.FC = () => {
                 <Route exact path="/create-project">
                     <CreateProject />
                 </Route>
-                <Route exact path={`/:${projectId}`}>
-                    <SingleProject project={{
-                        _id: 'Test',
-                        name: 'Test',
-                        description: 'Test',
-                        start: new Date(Date.now()),
-                        status: 'Test',
-                        members: ['a', 'b'],
-                        tasks: ['1', '2'],
-                    }} />
-                </Route>
                 <Route exact path="/">
-                    <Home />
+                    <Home setProjectId={setProjectId} />
                 </Route>
-                <Route path='/*'>
+                <Route exact path={`/${projectId}`}>
+                    <SingleProject projectId={projectId} />
+                </Route>
+                <Route exact path="/*">
                     <Notfound />
                 </Route>
             </Switch>
         </Router>
-    )
+    );
 };
 
 export default App;

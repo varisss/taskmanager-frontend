@@ -7,30 +7,37 @@ import ProjectList from './Project/ProjectList';
 //components
 import Headbar from './Headbar';
 
+interface HomeProps {
+  setProjectId: Function;
+}
+
 const initialState: any = [];
 
-const Home: React.FC = () => {
-    const [showButtonOverlay, setShowButtonOverlay] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [projects, setProjects] = useState(initialState);
+const Home: React.FC<HomeProps> = ({ setProjectId }) => {
+  const [showButtonOverlay, setShowButtonOverlay] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [projects, setProjects] = useState(initialState);
 
-    useEffect(() => {
-        const fetchProj = async () => {
-            const proj: any = await API.fetchProjects();
-            setProjects(proj);
-        }
-        fetchProj();
-    }, []);
+  useEffect(() => {
+    const fetchProj = async () => {
+      const proj: any = await API.fetchProjects();
+      setProjects(proj);
+    };
+    fetchProj();
+  }, []);
 
-    return (
-        <>
-            <Headbar header='dreamteam101' />
-            <h1 className='main-title'>All Projects</h1>
-            <ProjectList projects={projects} />
-            <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
-            <ButtonOverlay showOverlay={showButtonOverlay} callback={() => setShowButtonOverlay(false)} />
-        </>
-    );
-}
+  return (
+    <>
+      <Headbar header="dreamteam101" />
+      <h1 className="main-title">All Projects</h1>
+      <ProjectList projects={projects} setProjectId={setProjectId} />
+      <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
+      <ButtonOverlay
+        showOverlay={showButtonOverlay}
+        callback={() => setShowButtonOverlay(false)}
+      />
+    </>
+  );
+};
 
 export default Home;
