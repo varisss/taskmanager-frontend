@@ -27,17 +27,7 @@ export const Content = styled.div`
     };
 `;
 
-export const BackIcon = styled.img`
-    width: 40px;
-    height: auto;
-
-    @media screen and (max-width: 768px) {
-        width: 26px;
-    }
-`;
-
-
-export const ThreeDotIcon = styled.img`
+export const IconStyle = styled.img`
     width: 40px;
     height: auto;
 

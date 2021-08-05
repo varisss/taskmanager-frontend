@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.button`
+    box-sizing: border-box;
     position: fixed;
-    background-color: #803300;
-    width: 100px;
-    height: 100px;
+    background-color: transparent;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 0;
     bottom: 20px;
@@ -13,8 +14,8 @@ export const Wrapper = styled.button`
     cursor: pointer;
 
     @media screen and (max-width: 768px) {
-        width: 75px;
-        height: 75px;
+        width: 84px;
+        height: 84px;
     }
 
 `;

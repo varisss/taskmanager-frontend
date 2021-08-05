@@ -1,21 +1,25 @@
 import React from "react";
 
-import backIconImg from '../../images/BackIcon.png';
-import threeDotImg from '../../images/ThreeDot.png';
+//Icons
+import { IconContext } from "react-icons/lib";
+import { IoIosArrowRoundBack, IoMdPeople } from "react-icons/io";
 
-import { Wrapper, Content, BackIcon, ThreeDotIcon } from "./Headbar.styles";
+import { Wrapper, Content } from "./Headbar.styles";
 
 type Prop = {
     header: string
 }
+
 const Headbar: React.FC<Prop> = ({ header }) => (
-    <Wrapper>
-        <Content>
-            <BackIcon src={backIconImg} alt="back icon" />
-            <h2>header</h2>
-            <ThreeDotIcon src={threeDotImg} alt="three dot icon" />
-        </Content>
-    </Wrapper>
+    <IconContext.Provider value={{ color: "black", size: '40px' }}>
+        <Wrapper>
+            <Content>
+                <IoIosArrowRoundBack />
+                <h2>{header}</h2>
+                <IoMdPeople />
+            </Content>
+        </Wrapper>
+    </IconContext.Provider >
 );
 
 export default Headbar;

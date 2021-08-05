@@ -1,0 +1,30 @@
+
+.button-overlay {
+    z-index: 2;
+    position: fixed;
+    background-color: var(--medGrey);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    bottom: -100%;
+    transition: 850ms;
+}
+
+.button-overlay.active {
+    bottom: 0;
+    transition: 350ms;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 24px;
+}
+
+@media screen and (min-width: 768px) {
+    .button-overlay {
+        right: 20%;
+    }
+}
