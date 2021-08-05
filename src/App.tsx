@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // Components
 import Home from './components/Home';
 import Notfound from './components/Notfound';
-import Headbar from './components/Headbar';
+import Headbar from './components/Headbar/Headbar';
 import Project from './components/Project/Project';
 
 const App: React.FC = () => {
@@ -20,7 +20,7 @@ const App: React.FC = () => {
                     <Home />
                 </Route>
                 <Route path={`/${projectId}`}>
-                    <Home />
+                    <Project />
                 </Route>
                 <Route path='/*'>
                     <Notfound />
