@@ -8,7 +8,7 @@ interface Prop {
 
 const NormalButton: React.FC<Prop> = ({ text, callback }) => (
     <Wrapper type='button' onClick={callback} >
-        {text}
+        <h2>{text}</h2>
     </Wrapper>
 )
 

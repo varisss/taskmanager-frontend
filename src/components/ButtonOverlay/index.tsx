@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 // Components
 import NormalButton from "../Buttons/NormalButton";
 // Stlyes
@@ -10,13 +11,14 @@ interface Prop {
 }
 
 const ButtonOverlay: React.FC<Prop> = ({ showOverlay, callback }) => {
+    const history = useHistory();
 
     return (
         <div className={showOverlay ? 'button-overlay active' : 'button-overlay'} onClick={callback}>
             <div className='content'>
-                <h2>Create a new</h2>
-                <NormalButton text="Project" callback={() => { console.log("Create project") }} />
-                <NormalButton text="Announcement" callback={() => { console.log("Create announcement") }} />
+                <h2 className="headertext">Create a new</h2>
+                <NormalButton text="Project" callback={() => history.push('/create-project')} />
+                <NormalButton text="Annoucement" callback={() => { history.go(0) }} />
             </div>
         </div>
     );

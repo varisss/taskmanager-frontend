@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 //Icons
 import { IconContext } from "react-icons/lib";
 import { IoIosArrowRoundBack, IoMdPeople } from "react-icons/io";
@@ -10,16 +10,20 @@ type Prop = {
     header: string
 }
 
-const Headbar: React.FC<Prop> = ({ header }) => (
-    <IconContext.Provider value={{ color: "black", size: '40px' }}>
-        <Wrapper>
-            <Content>
-                <IoIosArrowRoundBack />
-                <h2>{header}</h2>
-                <IoMdPeople />
-            </Content>
-        </Wrapper>
-    </IconContext.Provider >
-);
+const Headbar: React.FC<Prop> = ({ header }) => {
+    const history = useHistory();
+
+    return (
+        <IconContext.Provider value={{ color: "black" }}>
+            <Wrapper>
+                <Content>
+                    <IoIosArrowRoundBack size='64px' onClick={() => { history.go(-1) }} />
+                    <h2>{header}</h2>
+                    <IoMdPeople size='44px' />
+                </Content>
+            </Wrapper>
+        </IconContext.Provider >
+    );
+}
 
 export default Headbar;
