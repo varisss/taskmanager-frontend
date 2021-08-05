@@ -4,9 +4,10 @@ export type Project = {
     _id: string
     name: string,
     description: string,
+    start: Date,
     status: string,
-    members: Member[],
-    tasks: Task[],
+    members: string[], // changed for testing
+    tasks: string[], // changed for testing
 }
 
 export type Member = {
