@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // Components
 import Home from './components/Home';
 import Notfound from './components/Notfound';
-import Headbar from './components/Headbar';
 import SingleProject from './components/Project/SingleProject';
+import CreateProject from './components/CreateProject';
 
 const App: React.FC = () => {
     const [projectId, setProjectId] = useState('test12345');
@@ -21,12 +21,11 @@ const App: React.FC = () => {
 
     return (
         <Router>
-            <Headbar header='dreamteam101' />
             <Switch>
-                <Route exact path='/'>
-                    <Home />
+                <Route exact path="/create-project">
+                    <CreateProject />
                 </Route>
-                <Route exact path={`/${projectId}`}>
+                <Route exact path={`/:${projectId}`}>
                     <SingleProject project={{
                         _id: 'Test',
                         name: 'Test',
@@ -37,7 +36,10 @@ const App: React.FC = () => {
                         tasks: ['1', '2'],
                     }} />
                 </Route>
-                <Route exact path='/*'>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route path='/*'>
                     <Notfound />
                 </Route>
             </Switch>

@@ -2,11 +2,13 @@
 .button-overlay {
     z-index: 2;
     position: fixed;
-    background-color: var(--medGrey);
+    background-color: var(--lightArancia);
     width: 100%;
     max-width: 600px;
     border-radius: 15px;
     bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
     transition: 850ms;
 }
 
@@ -18,9 +20,13 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    margin: 24px;
+    margin: 25px 56px;
+}
+
+.headertext {
+    margin-top: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -28,3 +34,4 @@
         right: 20%;
     }
 }
+

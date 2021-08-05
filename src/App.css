@@ -1,9 +1,13 @@
 :root {
   --maxWidth: 1440px;
   --white: #fff;
-  --lightGrey: #eee;
-  --medGrey: #353535;
-  --darkGrey: #1c1c1c;
+  --darkArancia: #1A0A00;
+  --darkishArancia: #803300;
+  --Arancia: #B24700;
+  --lightArancia: #DFB99F;
+  --yellowArancia: #F9D423;
+  --lightBrown: #8C6B5B;
+  --lightPink: #E7D1C9;
   --fontSuperBig: 2.5rem;
   --fontBig: 1.5rem;
   --fontMed: 1.2rem;
@@ -31,27 +35,36 @@
 body {
  margin: 0;
  padding: 0;
- background-color: #ccc;
+ background-color: #FFFAF0;
 }
 
 h1 {
    font-size: 2rem;
-   font-weight: 600;
-   color: var(--darkGrey);
+   font-weight: 700;
+   color: var(--darkishArancia);
 }
 
 h2 {
    font-size: 1.5rem;
-   font-weight: 600px;
-   color: var(--darkGrey);
+   font-weight: 700;
+   color: var(--darkishArancia);
 }
 
 h3 {
    font-size: 1.1rem;
-   font-weight: 600;
+   font-weight: 500;
+   color: var(--darkishArancia);
 }
 
 p {
    font-size: 1rem;
-   color: var(--darkGrey);
+   font-weight: 500;
+   color: var(--Arancia);
+}
+
+p.italic {
+   font-size: 1rem;
+   font-style: italic;
+   font-weight: 400;
+   color: var(--Arancia);
 }

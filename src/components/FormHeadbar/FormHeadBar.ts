@@ -12,13 +12,12 @@ export const Wrapper = styled.header`
 export const Content = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     max-width: var(--maxWidth);
     margin: 0 auto;
     padding: 10px 0px;
     
     h2 {
-        margin: 0 20px;
         font-size: var(--fontBig);
         overflow: auto;
     };

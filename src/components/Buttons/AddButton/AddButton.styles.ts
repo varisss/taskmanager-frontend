@@ -4,8 +4,8 @@ export const Wrapper = styled.button`
     box-sizing: border-box;
     position: fixed;
     background-color: transparent;
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     border: 0;
     bottom: 20px;
@@ -14,8 +14,8 @@ export const Wrapper = styled.button`
     cursor: pointer;
 
     @media screen and (max-width: 768px) {
-        width: 84px;
-        height: 84px;
+        width: 100px;
+        height: 100px;
     }
 
 `;

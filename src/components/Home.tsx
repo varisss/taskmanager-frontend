@@ -5,6 +5,7 @@ import AddButton from './Buttons/AddButton';
 import ProjectList from './Project/ProjectList';
 
 //components
+import Headbar from './Headbar';
 
 const initialState: any = [];
 
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
 
     return (
         <>
+            <Headbar header='dreamteam101' />
             <h1 className='main-title'>All Projects</h1>
             <ProjectList projects={projects} />
             <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
