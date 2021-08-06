@@ -7,7 +7,6 @@ export type Project = {
     start: Date,
     status: string,
     members: string[], // changed for testing
-    tasks: string[], // changed for testing
 }
 
 export type Member = {
@@ -20,11 +19,14 @@ export type Task = {
     project: string,
     name: string,
     description: string,
+    start: Date,
     status: string,
     updates: string[],
 }
 
+
 export default {
+    // for projects
     fetchProjects: async (): Promise<Project[]> => {
         const projects: any = await axios.get('http://localhost:4000/api/projects');
         console.log(projects.data);
@@ -34,13 +36,13 @@ export default {
         const project: any = await axios.get(`http://localhost:4000/api/projects/${projectId}`);
         return project.data;
     },
-    createProject: async () => {
+    createProjectRequest: async (fromData: FormData) => {
 
     },
-    updateProject: async () => {
+    updateProjectRequest: async () => {
 
     },
-    deleteProject: async () => {
+    deleteProjectRequest: async () => {
 
     },
 }

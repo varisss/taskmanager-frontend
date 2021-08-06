@@ -14,7 +14,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId }) => {
     };
     fetchProject();
   }, []);
-  if (project) {
+  if(project) {
     return (
       <>
         <h1 className="main-title">{project.name}</h1>
@@ -27,11 +27,11 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId }) => {
               <li>{member}</li>
             ))}
           </ul>
-          <ul>
+          {/* <ul>
             {project.tasks.map((task) => (
               <li>{task}</li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </>
     );

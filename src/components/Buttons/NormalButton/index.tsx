@@ -1,15 +1,25 @@
+import { type } from "os";
 import React from "react";
 import { Wrapper } from './NormalButton.style';
 
 interface Prop {
     text: string
-    callback: () => void
+    type?: string
+    callback?: () => void
 }
 
-const NormalButton: React.FC<Prop> = ({ text, callback }) => (
-    <Wrapper type='button' onClick={callback} >
-        <h2>{text}</h2>
-    </Wrapper>
-)
+const defaultProp = {
+    text: "",
+    type: "submit",
+    callback: () => { }
+}
+
+const NormalButton: React.FC<Prop> = (prop) => {
+    const newProp = { ...defaultProp, ...prop };
+
+    return (<Wrapper type='button' onClick={newProp.callback} itemType={newProp.type}>
+        <h2>{newProp.text}</h2>
+    </Wrapper>);
+}
 
 export default NormalButton;

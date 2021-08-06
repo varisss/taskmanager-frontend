@@ -4,11 +4,17 @@ import React from "react";
 import ProjectForm from "./ProjectForm";
 import FormHeadbar from "./FormHeadbar";
 
+// Types
+import { Member } from "../API";
 
-const CreateProject: React.FC = (projects) => (
+interface Prop {
+    members: Member[];
+}
+
+const CreateProject: React.FC<Prop> = ({ members }) => (
     <>
         <FormHeadbar header='Create Project' ></FormHeadbar>
-        <ProjectForm />
+        <ProjectForm members={members} />
     </>
 );
 
