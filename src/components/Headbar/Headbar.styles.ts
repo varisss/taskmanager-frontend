@@ -5,9 +5,7 @@ export const Wrapper = styled.header`
     max-width: var(--maxWidth);
     padding: 0 20px;
     background-color: transparent;
-    top: 0;
-    left: 0;
-    right: 0;
+    margin: 0 auto;
 
 `;
 
@@ -21,7 +19,6 @@ export const Content = styled.div`
     
     h2 {
         margin: 10px 20px 0px 20px;
-        font-size: var(--fontBig);
         overflow: auto;
     };
 `;
