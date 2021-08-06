@@ -16,6 +16,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
       {projects.map((proj: any) => (
         <div className="project">
           <Link
+            style={{ textDecoration: 'none' }}
             to={`/${proj._id}`}
             onClick={() => {
               console.log(proj._id);

@@ -5,6 +5,8 @@ import TaskList from '../Task/TaskList';
 // Components
 import Headbar from '../Headbar';
 import NoContent from '../NoContent';
+import AddButton from '../Buttons/AddButton';
+import ButtonOverlay from '../ButtonOverlay';
 
 // Image
 import BuddaMask from '../../images/budda_mask.png';
@@ -19,6 +21,7 @@ const initialState: any = [];
 const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   const [project, setProject] = useState<Project>();
   const [tasks, setTasks] = useState(initialState);
+  const [showButtonOverlay, setShowButtonOverlay] = useState(false);
 
   useEffect(() => {
     const fetchProj = async () => {
@@ -40,7 +43,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         <Headbar header={project.name}/>
         <div className="project">
           <h3>{project.status}</h3>
-          <h3>{project.start}</h3>
+          <h3>{new Date(project.start).toString().slice(0, 15)}</h3>
           <p>{project.description}</p>
           <ul>
             {project.members.map((member) => (
@@ -54,6 +57,13 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
             heading="Project tasks shows here"
             subheading={`There are no task in this\nproject right now`}
             image={BuddaMask} />}
+        <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)}/>
+        <ButtonOverlay
+        itemToadd="Task"
+        link1="create-task"
+        showOverlay={showButtonOverlay}
+        callback={() => setShowButtonOverlay(false)}
+      />
       </>
     );
   } else {
