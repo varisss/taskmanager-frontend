@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import API, { Project } from '../../API';
 import TaskList from '../Task/TaskList';
 
+// Components
+import Headbar from '../Headbar';
+import NoContent from '../NoContent';
+
+// Image
+import BuddaMask from '../../images/budda_mask.png';
+
 interface ProjectProps {
   projectId: String;
   setTaskId: Function;
@@ -29,7 +36,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   if(project) {
     return (
       <>
-        <h1 className="main-title">{project.name}</h1>
+        <Headbar header={project.name}/>
         <div className="project">
           <h3>{project.status}</h3>
           <h3>{project.start}</h3>
@@ -40,7 +47,12 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
             ))}
           </ul>
         </div>
-        <TaskList projectId={projectId} tasks={tasks} setTaskId={setTaskId} />
+        {(tasks.length > 0)
+          ? <TaskList projectId={projectId} tasks={tasks} setTaskId={setTaskId} />
+          : <NoContent
+            heading="Project tasks shows here"
+            subheading={`There are no task in this\nproject right now`}
+            image={BuddaMask} />}
       </>
     );
   } else {
