@@ -33,5 +33,7 @@ export const TextArea = styled.textarea`
     border-width: 1px;
     margin-bottom: 40px;
     outline: none;
+    font: 400 15px Poppins;
     font-style: italic;
+
 `;
