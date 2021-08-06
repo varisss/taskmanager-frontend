@@ -40,7 +40,7 @@ const App: React.FC = () => {
           <CreateProject members={memberlist as Member[]} />
         </Route>
         <Route path="/:projectId/create-task">
-          <CreateTask />
+          <CreateTask members={memberlist as Member[]} projectId={projectId}/>
         </Route>
         <Route exact path="/">
           <Home setProjectId={setProjectId} />
