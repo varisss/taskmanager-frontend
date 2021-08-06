@@ -8,14 +8,14 @@ interface TaskListProps {
   setTaskId: Function;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks, setTaskId }) => {
+const TaskList: React.FC<TaskListProps> = ({ projectId, tasks, setTaskId }) => {
   useEffect(() => setTaskId(''), []);
   return (
     <>
       {tasks.map((task: any) => (
         <div className="project">
           <Link
-            to={`/${task._id}`}
+            to={`/${projectId}/${task._id}`}
             onClick={() => {
               console.log(task._id);
               setTaskId(task._id);

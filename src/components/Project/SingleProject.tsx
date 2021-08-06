@@ -21,17 +21,18 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
     const fetchTasks = async () => {
       const t: any = await API.fetchTasks(projectId);
       setTasks(t);
+      console.log(t);
     };
     fetchProj();
     fetchTasks();
   }, []);
-  if(project) {
+  if (project) {
     return (
       <>
         <h1 className="main-title">{project.name}</h1>
         <div className="project">
           <h3>{project.status}</h3>
-          <h3>{project.start.toString()}</h3>
+          {/* <h3>{project.start.toString()}</h3> */}
           <p>{project.description}</p>
           <ul>
             {project.members.map((member) => (
