@@ -15,7 +15,8 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
 
   useEffect(() => {
     const fetchProj = async () => {
-      const proj: any = await API.fetchProject(projectId);
+      const proj: Project = await API.fetchProject(projectId);
+      console.log(proj);
       setProject(proj);
     };
     const fetchTasks = async () => {
@@ -31,11 +32,11 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         <h1 className="main-title">{project.name}</h1>
         <div className="project">
           <h3>{project.status}</h3>
-          <h3>{project.start.toString()}</h3>
+          <h3>{project.start}</h3>
           <p>{project.description}</p>
           <ul>
             {project.members.map((member) => (
-              <li>{member}</li>
+              <li>{member.name + ": " + member.role}</li>
             ))}
           </ul>
         </div>

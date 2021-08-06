@@ -4,7 +4,7 @@ export type Project = {
     _id: string;
     name: string;
     description: string;
-    members: string[];
+    members: Member[];
     start: Date;
     status: string;
 };
@@ -39,7 +39,7 @@ export default {
         console.log(project.data);
         return project.data;
     },
-    createProject: async (projectData: Object): Promise<any> => {
+    createProject: async (projectData: Object): Promise<boolean> => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',

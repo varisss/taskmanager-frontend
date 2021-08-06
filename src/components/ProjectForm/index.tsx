@@ -56,15 +56,17 @@ const ProjectForm: React.FC<MemberProp> = ({ members }) => {
                 <Label>Project member</Label>
                 <Select
                     isMulti
-                    //closeMenuOnSelect={false}
+                    closeMenuOnSelect={false}
                     options={members.map((member: Member, index) => ({ value: index, label: member.name }))}
                     onChange={event => {
                         setSelectMembers(Array.isArray(event) ? event.map(x => (members[x.value])) : [])
                     }}
                 ></Select>
-                <div>
-                    {selectMembers.map(m => <p key={hashCode(m.name + m.role)}>{`${m.name}: ${m.role}`}</p>)}
-                </div>
+                <ul>
+                    {selectMembers.map(
+                        m => <li key={hashCode(m.name + m.role).toString()}>{`${m.name}: ${m.role}`}</li>
+                    )}
+                </ul>
                 <Label>Project info</Label>
                 <TextArea id="project-info" placeholder="Add project info..."
                     value={projectInfo} onChange={event => setProjectInfo(event.currentTarget.value)} />
