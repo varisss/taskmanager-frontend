@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Project } from '../../API';
+import { Project, Member } from '../../API';
 
 interface TaskListProps {
   projectId: String;
@@ -23,13 +23,17 @@ const TaskList: React.FC<TaskListProps> = ({ projectId, tasks, setTaskId }) => {
           >
             <h1>{task.name}</h1>
           </Link>
-          <p>{task.status}</p>
-          {task.updates.map((update: any) => (
+          <p>Status: {task.status}</p>
+          <h3>Responsible Members</h3>
+          {task.members.map((member: Member) => (
+            <p>{member.name + ': ' + member.role}</p>
+          ))}
+          {/* {task.updates.map((update: any) => (
             <>
               <p>{update}</p>
               <hr />
             </>
-          ))}
+          ))} */}
         </div>
       ))}
     </>

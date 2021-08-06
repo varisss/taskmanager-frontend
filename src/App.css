@@ -1,13 +1,13 @@
 :root {
   --maxWidth: 1440px;
   --white: #fff;
-  --darkArancia: #1A0A00;
+  --darkArancia: #1a0a00;
   --darkishArancia: #803300;
-  --Arancia: #B24700;
-  --lightArancia: #DFB99F;
-  --yellowArancia: #F9D423;
-  --lightBrown: #8C6B5B;
-  --lightPink: #E7D1C9;
+  --Arancia: #b24700;
+  --lightArancia: #dfb99f;
+  --yellowArancia: #f9d423;
+  --lightBrown: #8c6b5b;
+  --lightPink: #e7d1c9;
   --fontSuperBig: 2.5rem;
   --fontBig: 1.5rem;
   --fontMed: 1.2rem;
@@ -21,50 +21,66 @@
 
 .main-title {
   text-align: center;
-  margin: 100px 0px 30px 0px;
+  margin: 60px 0px 30px 0px;
+}
+
+.project-title {
+  text-align: center;
+  margin: 40px 0px 30px 0px;
+}
+
+.task-title {
+  text-align: center;
+  margin: 20px 0px 30px 0px;
 }
 
 .project {
   padding: 20px;
-  margin: 20px;
+  margin: 30px;
   background-color: var(--white);
   border-radius: 20px;
   text-align: center;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
- margin: 0;
- padding: 0;
- background-color: #FFFAF0;
+  margin: 0;
+  padding: 0;
+  background-color: #fffaf0;
 }
 
 h1 {
-   font-size: 2rem;
-   font-weight: 700;
-   color: var(--darkishArancia);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--darkishArancia);
 }
 
 h2 {
-   font-size: 1.5rem;
-   font-weight: 700;
-   color: var(--darkishArancia);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--darkishArancia);
 }
 
 h3 {
-   font-size: 1.1rem;
-   font-weight: 500;
-   color: var(--darkishArancia);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--darkishArancia);
 }
 
 p {
-   font-size: 1rem;
-   font-weight: 500;
-   color: var(--Arancia);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--Arancia);
 }
 
 p.italic {
-   font-size: 1rem;
-   font-style: italic;
-   font-weight: 400;
-   color: var(--Arancia);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--Arancia);
 }
