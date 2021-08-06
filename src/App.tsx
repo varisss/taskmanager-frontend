@@ -11,18 +11,21 @@ import Home from './components/Home';
 import Notfound from './components/Notfound';
 import SingleProject from './components/Project/SingleProject';
 import CreateProject from './components/CreateProject';
+import SingleTask from './components/Task/SingleTask';
+
+const memberlist = [
+    { name: "Too", role: "Project Manager" },
+    { name: "Earthi", role: "UX/UI designer" },
+    { name: "Kaoklong", role: "Frontend Developer" },
+    { name: "Pae", role: "Fontend Developer" },
+    { name: "team", role: "Backend Developer" },
+]
 
 const App: React.FC = () => {
     const [projectId, setProjectId] = useState('');
-    const memberlist = [
-        { name: "Too", role: "Project Manager" },
-        { name: "Earthi", role: "UX/UI designer" },
-        { name: "Kaoklong", role: "Frontend Developer" },
-        { name: "Pae", role: "Fontend Developer" },
-        { name: "team", role: "Backend Developer" },
-    ]
-
+    const [taskId, setTaskId] = useState('');
     console.log(projectId);
+    console.log(taskId);
     // project id will be set when the user clicks on a project
     // in the project list
 
@@ -39,7 +42,10 @@ const App: React.FC = () => {
                     <Home setProjectId={setProjectId} />
                 </Route>
                 <Route exact path={`/${projectId}`}>
-                    <SingleProject projectId={projectId} />
+                    <SingleProject projectId={projectId} setTaskId={setTaskId} />
+                </Route>
+                <Route exact path={`/${projectId}/${taskId}`}>
+                    <SingleTask projectId={projectId} />
                 </Route>
                 <Route exact path="/*">
                     <Notfound />

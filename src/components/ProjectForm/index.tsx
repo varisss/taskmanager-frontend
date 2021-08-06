@@ -1,7 +1,7 @@
 import React from "react";
 import { Member } from "../../API";
 // Styles
-import { Wrapper, Content, Label, Input, TextArea } from "./ProjectFrom.styles";
+import { Wrapper, Content, Label, Input, TextArea } from './ProjectFrom.styles';
 
 // Components
 import NormalButton from "../Buttons/NormalButton";

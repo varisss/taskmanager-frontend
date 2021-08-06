@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import API, { Project } from '../../API';
+import TaskList from '../Task/TaskList';
 
 interface ProjectProps {
   projectId: String;
+  setTaskId: Function;
 }
 
-const SingleProject: React.FC<ProjectProps> = ({ projectId }) => {
+const initialState: any = [];
+
+const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   const [project, setProject] = useState<Project>();
+  const [tasks, setTasks] = useState(initialState);
+
   useEffect(() => {
-    const fetchProject = async () => {
+    const fetchProj = async () => {
       const proj: any = await API.fetchProject(projectId);
       setProject(proj);
     };
-    fetchProject();
+    const fetchTasks = async () => {
+      const t: any = await API.fetchTasks(projectId);
+      setTasks(t);
+    };
+    fetchProj();
+    fetchTasks();
   }, []);
   if(project) {
     return (
@@ -20,19 +31,15 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId }) => {
         <h1 className="main-title">{project.name}</h1>
         <div className="project">
           <h3>{project.status}</h3>
-          {/* <h3>{project.start}</h3> */}
+          <h3>{project.start.toString()}</h3>
           <p>{project.description}</p>
           <ul>
             {project.members.map((member) => (
               <li>{member}</li>
             ))}
           </ul>
-          {/* <ul>
-            {project.tasks.map((task) => (
-              <li>{task}</li>
-            ))}
-          </ul> */}
         </div>
+        <TaskList projectId={projectId} tasks={tasks} setTaskId={setTaskId} />
       </>
     );
   } else {
