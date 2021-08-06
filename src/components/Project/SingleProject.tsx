@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import API, { Project } from '../../API';
-import TaskList from '../Task/TaskList';
+import React, { useState, useEffect } from "react";
+import API, { Project } from "../../API";
+import TaskList from "../Task/TaskList";
 
 // Components
-import Headbar from '../Headbar';
-import NoContent from '../NoContent';
-import AddButton from '../Buttons/AddButton';
-import ButtonOverlay from '../ButtonOverlay';
+import Headbar from "../Headbar";
+import NoContent from "../NoContent";
+import AddButton from "../Buttons/AddButton";
+import ButtonOverlay from "../ButtonOverlay";
 
 // Image
-import BuddaMask from '../../images/budda_mask.png';
+import BuddaMask from "../../images/budda_mask.png";
 
 interface ProjectProps {
   projectId: String;
@@ -31,8 +31,8 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
     };
     const fetchTasks = async () => {
       const t: any = await API.fetchTasks(projectId);
-      setTasks(t);
       console.log(t);
+      setTasks(t);
     };
     fetchProj();
     fetchTasks();
@@ -40,35 +40,49 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   if (project) {
     return (
       <>
-        <Headbar header={project.name}/>
+        <Headbar header={project.name} />
+        <h1 className="project-title">Project Info</h1>
         <div className="project">
-          <h3>{project.status}</h3>
-          <h3>{new Date(project.start).toString().slice(0, 15)}</h3>
+          <h3>Status: {project.status}</h3>
+          <h3>Started On: {new Date(project.start).toString().slice(0, 15)}</h3>
           <p>{project.description}</p>
-          <ul>
-            {project.members.map((member) => (
-              <li>{member.name + ": " + member.role}</li>
-            ))}
-          </ul>
+          {/* <h3>Project Members</h3>
+          {project.members.map((member) => (
+            <p>{member.name + ': ' + member.role}</p>
+          ))} */}
         </div>
-        {(tasks.length > 0)
-          ? <TaskList projectId={projectId} tasks={tasks} setTaskId={setTaskId} />
-          : <NoContent
-            heading="Project tasks shows here"
-            subheading={`There are no task in this\nproject right now`}
-            image={BuddaMask} />}
-        <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)}/>
+        {tasks.length > 0 ? (
+          <>
+            <h1 className="project-title">Tasks</h1>
+            <TaskList
+              projectId={projectId}
+              tasks={tasks}
+              setTaskId={setTaskId}
+            />
+          </>
+        ) : (
+          <NoContent
+            heading="Project tasks show here"
+            subheading={`There are no tasks in this project right now`}
+            image={BuddaMask}
+          />
+        )}
+        <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
         <ButtonOverlay
-        buttonText1="Task"
-        buttonText2="Update Project"
-        link1={projectId + "/create-task"}
-        showOverlay={showButtonOverlay}
-        callback={() => setShowButtonOverlay(false)}
-      />
+          buttonText1="Task"
+          buttonText2="Update Project"
+          link1={projectId + "/create-task"}
+          showOverlay={showButtonOverlay}
+          callback={() => setShowButtonOverlay(false)}
+        />
       </>
     );
   } else {
-    return <h1>Loading</h1>;
+    return (
+      <div className="loading">
+        <h1>Loading</h1>
+      </div>
+    );
   }
 };
 

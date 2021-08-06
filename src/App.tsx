@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 // Types
 import { Member } from './API';
@@ -22,9 +22,20 @@ const memberlist = [
   { name: 'team', role: 'Backend Developer' },
 ];
 
+function useStickyState(defaultValue: string, key: string) {
+  const [value, setValue] = useState(() => {
+    const stickyValue = window.localStorage.getItem(key);
+    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
+  });
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+  return [value, setValue];
+}
+
 const App: React.FC = () => {
-  const [projectId, setProjectId] = useState('');
-  const [taskId, setTaskId] = useState('');
+  const [projectId, setProjectId] = useStickyState('', 'projectId');
+  const [taskId, setTaskId] = useStickyState('', 'taskId');
   console.log(projectId);
   console.log(taskId);
   // project id will be set when the user clicks on a project

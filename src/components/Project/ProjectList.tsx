@@ -10,7 +10,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
   projects,
   setProjectId,
 }) => {
-  useEffect(() => setProjectId(''), []);
+  //useEffect(() => setProjectId(''), []);
   return (
     <>
       {projects.map((proj: any) => (
