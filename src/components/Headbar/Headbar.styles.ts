@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
+    width: 100%;
+    max-width: var(--maxWidth);
     padding: 0 20px;
     background-color: transparent;
     top: 0;

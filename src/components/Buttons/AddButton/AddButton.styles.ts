@@ -12,10 +12,4 @@ export const Wrapper = styled.button`
     right: 20px;
     outline: none;
     cursor: pointer;
-
-    @media screen and (max-width: 768px) {
-        width: 100px;
-        height: 100px;
-    }
-
 `;
