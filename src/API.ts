@@ -1,12 +1,12 @@
 import axios from 'axios';
 //Types
 export type Project = {
-  _id: string;
-  name: string;
-  description: string;
-  members: string[];
-  start: Date;
-  status: string;
+    _id: string;
+    name: string;
+    description: string;
+    members: Member[];
+    start: Date;
+    status: string;
 };
 
 export type Task = {
