@@ -60,7 +60,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)}/>
         <ButtonOverlay
         itemToadd="Task"
-        link1="create-task"
+        link1={projectId + "/create-task"}
         showOverlay={showButtonOverlay}
         callback={() => setShowButtonOverlay(false)}
       />

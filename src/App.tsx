@@ -12,6 +12,7 @@ import Notfound from './components/Notfound';
 import SingleProject from './components/Project/SingleProject';
 import CreateProject from './components/CreateProject';
 import SingleTask from './components/Task/SingleTask';
+import CreateTask from './components/CreateTask';
 
 const memberlist = [
   { name: 'Too', role: 'Project Manager' },
@@ -37,6 +38,9 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/create-project">
           <CreateProject members={memberlist as Member[]} />
+        </Route>
+        <Route path="/:projectId/create-task">
+          <CreateTask />
         </Route>
         <Route exact path="/">
           <Home setProjectId={setProjectId} />
