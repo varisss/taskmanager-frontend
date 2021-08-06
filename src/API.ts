@@ -14,7 +14,7 @@ export type Task = {
   project: string;
   name: string;
   description: string;
-  members: string[];
+  members: Member[];
   start: Date;
   deadline: Date;
   status: string;

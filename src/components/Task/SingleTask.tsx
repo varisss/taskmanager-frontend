@@ -19,13 +19,13 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
     return (
       <>
         <h1 className="main-title">{task.name}</h1>
-        <div className="project">
+        <div>
           <h3>{task.status}</h3>
-          {/* <h3>{task.start.toString()}</h3> */}
+          <h3>{new Date(task.start).toString().slice(0, 15)}</h3>
           <p>{task.description}</p>
           <ul>
             {task.members.map((member) => (
-              <li>{member}</li>
+              <li>{member.name + ": " + member.role}</li>
             ))}
           </ul>
           <hr />
