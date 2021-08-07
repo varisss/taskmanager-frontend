@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import Select from "react-select";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Select from 'react-select';
 
 // Styles
-import { Wrapper, Content, Label, Input, TextArea } from "./TaskForm.styles";
+import { Wrapper, Content, Label, Input, TextArea } from './TaskForm.styles';
 
 // Components
-import NormalButton from "../Buttons/NormalButton";
+import NormalButton from '../Buttons/NormalButton';
 
 // Helpers
-import { hashCode } from "../../helper";
-import API, { Member } from "../../API";
+import { hashCode } from '../../helper';
+import API, { Member } from '../../API';
 
 interface MemberProp {
   projectId: string;
@@ -17,18 +18,43 @@ interface MemberProp {
 }
 
 const statusOptions = [
-  { value: "pending", label: "Pending" },
-  { value: "ongoing", label: "Ongoing" },
-  { value: "complete", label: "Complete" },
+  { value: 'pending', label: 'Pending' },
+  { value: 'ongoing', label: 'Ongoing' },
+  { value: 'complete', label: 'Complete' },
 ];
 
 const TaskForm: React.FC<MemberProp> = ({ projectId, members }) => {
-  const [taskName, setTaskName] = useState("");
+  const history = useHistory();
+  const [taskName, setTaskName] = useState('');
   const [selectMembers, setSelectMembers] = useState([] as Member[]);
   const [status, setStatus] = useState(statusOptions[0]);
-  const [taskInfo, setTaskInfo] = useState("");
+  const [taskInfo, setTaskInfo] = useState('');
+  const [deadline, setDeadline] = useState('');
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    // If project name is not type doesn't trigger API post
+    if (taskName === '') {
+      console.log('Plase type task name!');
+      /* TO DO: Show error message to user */
+      return;
+    }
+    const d = new Date();
+    const sendingData = {
+      project: projectId,
+      name: taskName,
+      description: taskInfo,
+      members: selectMembers,
+      status: status,
+      start: d,
+      deadline: deadline,
+    };
+
+    console.log('sending the created task');
+    const response = await API.createTask(projectId, sendingData);
+    console.log(response);
+    /* TO DO: set loading state to trigger project all fecth in homepage */
+    history.replace('/');
+  };
 
   return (
     <Wrapper>
@@ -68,11 +94,15 @@ const TaskForm: React.FC<MemberProp> = ({ projectId, members }) => {
           onChange={(event) => setStatus(event!)}
           defaultValue={statusOptions[0]}
         />
-        {status.value === "ongoing" ? (
+        {status.value === 'ongoing' ? (
           <>
-            {" "}
+            {' '}
             <Label>deadLine</Label>
-            <Input type="date" />
+            <Input
+              type="date"
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
+            />
           </>
         ) : null}
         <Label>Task info</Label>

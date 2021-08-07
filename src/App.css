@@ -40,6 +40,7 @@
   background-color: var(--white);
   border-radius: 20px;
   text-align: center;
+  box-shadow: #ded0c7 5px 5px 10px;
 }
 
 .loading {

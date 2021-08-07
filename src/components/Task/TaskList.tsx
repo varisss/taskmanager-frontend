@@ -15,6 +15,7 @@ const TaskList: React.FC<TaskListProps> = ({ projectId, tasks, setTaskId }) => {
       {tasks.map((task: any) => (
         <div className="project">
           <Link
+            style={{ textDecoration: 'none' }}
             to={`/${projectId}/${task._id}`}
             onClick={() => {
               console.log(task._id);
