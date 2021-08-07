@@ -65,11 +65,10 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
           <p className="btn-text">Delete Task</p>
         </button>
         <h1 className="project-title">Updates</h1>
-        {task.updates.map((update) => (
+        {task.updates.map((update: any) => (
           <div className="card">
-            <h2>{update}</h2>
-            <p>Description here...</p>
-            <p>Updated by ...</p>
+            <p>{update.message}</p>
+            <h3>Updated by: {update.member}</h3>
           </div>
         ))}
       </Wrapper>

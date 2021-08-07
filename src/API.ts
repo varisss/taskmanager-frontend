@@ -26,11 +26,10 @@ export type Member = {
   role: string;
 };
 
-export type Update = {
-  name: string;
-  description: string;
-  member: Member;
-};
+// export type Update = {
+//   message: string;
+//   member: string;
+// };
 
 export default {
   fetchProjects: async (): Promise<Project[]> => {
@@ -139,6 +138,28 @@ export default {
       await axios.post(
         `http://localhost:4000/api/projects/${projectId}/tasks/${taskId}`,
         taskData,
+        config
+      );
+      return true;
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
+  },
+  addUpdate: async (
+    projectId: String,
+    taskId: String,
+    update: Object
+  ): Promise<any> => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      await axios.post(
+        `http://localhost:4000/api/projects/${projectId}/tasks/${taskId}/update`,
+        update,
         config
       );
       return true;
