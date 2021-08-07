@@ -68,17 +68,15 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
               image={BuddaMask}
             />
           )}
-          <AddButton
-            callback={() => setShowButtonOverlay(!showButtonOverlay)}
-          />
-          <ButtonOverlay
-            buttonText1="Task"
-            buttonText2="Update Project"
-            link1={projectId + "/create-task"}
-            showOverlay={showButtonOverlay}
-            callback={() => setShowButtonOverlay(false)}
-          />
         </Wrapper>
+        <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
+        <ButtonOverlay
+          buttonText1="Task"
+          buttonText2="Update Project"
+          link1={projectId + "/create-task"}
+          showOverlay={showButtonOverlay}
+          callback={() => setShowButtonOverlay(false)}
+        />
       </>
     );
   } else {
