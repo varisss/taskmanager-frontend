@@ -21,7 +21,7 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
       <>
         <Headbar header="" />
         <h1 className="task-title">{task.name}</h1>
-        <div className="project">
+        <div className="info-box">
           <h3>{task.status}</h3>
           <h3>{new Date(task.start).toString().slice(0, 15)}</h3>
           <p>{task.description}</p>

@@ -42,7 +42,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
       <>
         <Headbar header={project.name} />
         <h1 className="project-title">Project Info</h1>
-        <div className="project">
+        <div className="info-box">
           <h3>Status: {project.status}</h3>
           <h3>Started On: {new Date(project.start).toString().slice(0, 15)}</h3>
           <p>{project.description}</p>

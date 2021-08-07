@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Member } from "../../API";
 
 // Styles
 import { Wrapper } from "./ProjectList.styles";
@@ -18,7 +19,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
     <Wrapper>
       <h2 className="main-title">Recent Projects</h2>
       {projects.map((proj: any) => (
-        <div className="project">
+        <div className="card">
           <Link
             style={{ textDecoration: "none" }}
             to={`/${proj._id}`}
@@ -30,7 +31,12 @@ const ProjectList: React.FC<ProjectListProps> = ({
             <h2>{proj.name}</h2>
           </Link>
           <p>{proj.description}</p>
-          <p>{proj.status}</p>
+          <div className="members-container">
+            {proj.members.map((member: Member) => (
+              <p>{member.name}</p>
+            ))}
+          </div>
+          <div className="status-bar">{proj.status}</div>
         </div>
       ))}
     </Wrapper>
