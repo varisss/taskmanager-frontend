@@ -63,6 +63,35 @@
   right: 25px;
 }
 
+.btn-text {
+  font-size: 1.2em;
+  color: white;
+}
+
+.update-btn {
+  padding: 0px;
+  margin: 10px 0px;
+  background: var(--darkishArancia);
+  border: none;
+  border-radius: 10px;
+}
+
+.update-btn:hover {
+  cursor: pointer;
+}
+
+.delete-btn {
+  padding: 0px;
+  margin: 10px 0px;
+  background: var(--darkArancia);
+  border: none;
+  border-radius: 10px;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+}
+
 .info-box {
   text-align: center;
   padding: 25px;

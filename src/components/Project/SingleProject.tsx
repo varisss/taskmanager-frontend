@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API, { Project } from "../../API";
+import { useHistory } from "react-router-dom";
+
 // Components
 import Headbar from "../Headbar";
 import NoContent from "../NoContent";
@@ -19,9 +21,22 @@ interface ProjectProps {
 const initialState: any = [];
 
 const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
+  const history = useHistory();
   const [project, setProject] = useState<Project>();
   const [tasks, setTasks] = useState(initialState);
   const [showButtonOverlay, setShowButtonOverlay] = useState(false);
+
+  const deleteProject = async (id: String) => {
+    try {
+      await API.deleteProject(id);
+      history.replace("/");
+      console.log("deleted");
+      return;
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+  };
 
   useEffect(() => {
     const fetchProj = async () => {
@@ -47,20 +62,26 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
             <p>Status: {project.status}</p>
             <p>Started On: {new Date(project.start).toString().slice(0, 15)}</p>
             <p>{project.description}</p>
-            {/* <h3>Project Members</h3>
-          {project.members.map((member) => (
-            <p>{member.name + ': ' + member.role}</p>
-          ))} */}
           </div>
+          <button className="update-btn">
+            <p className="btn-text">Update Project</p>
+          </button>
+          <button
+            className="delete-btn"
+            onClick={async () => {
+              if (window.confirm("Are you sure? This cannot be undone.")) {
+                await deleteProject(projectId);
+              }
+            }}
+          >
+            <p className="btn-text">Delete Project</p>
+          </button>
           {tasks.length > 0 ? (
-            <>
-              {/* <h1 className="project-title">Tasks</h1> */}
-              <TaskList
-                projectId={projectId}
-                tasks={tasks}
-                setTaskId={setTaskId}
-              />
-            </>
+            <TaskList
+              projectId={projectId}
+              tasks={tasks}
+              setTaskId={setTaskId}
+            />
           ) : (
             <NoContent
               heading="Project tasks show here"
