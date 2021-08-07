@@ -47,12 +47,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/create-project">
-          <CreateProject members={memberlist as Member[]} />
-        </Route>
-        <Route path="/:projectId/create-task">
-          <CreateTask members={memberlist as Member[]} projectId={projectId}/>
-        </Route>
         <Route exact path="/">
           <Home setProjectId={setProjectId} />
         </Route>
@@ -61,6 +55,12 @@ const App: React.FC = () => {
         </Route>
         <Route exact path={`/${projectId}/${taskId}`}>
           <SingleTask projectId={projectId} taskId={taskId} />
+        </Route>
+        <Route exact path="/create-project">
+          <CreateProject members={memberlist as Member[]} />
+        </Route>
+        <Route path={`/${projectId}/create-task`}>
+          <CreateTask members={memberlist as Member[]} projectId={projectId} />
         </Route>
         <Route exact path="/*">
           <Notfound />

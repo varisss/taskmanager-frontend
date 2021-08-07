@@ -26,6 +26,12 @@ export type Member = {
   role: string;
 };
 
+export type Update = {
+  name: string;
+  description: string;
+  member: Member;
+};
+
 export default {
   fetchProjects: async (): Promise<Project[]> => {
     const projects: any = await axios.get('http://localhost:4000/api/projects');
@@ -109,7 +115,7 @@ export default {
     };
     try {
       await axios.post(
-        `http://localhost:4000/api/projects/${projectId}`,
+        `http://localhost:4000/api/projects/${projectId}/tasks`,
         taskData,
         config
       );
