@@ -1,6 +1,7 @@
 :root {
   --maxWidth: 1440px;
   --white: #fff;
+  --medGrey: #c4c4c4;
   --darkArancia: #1a0a00;
   --darkishArancia: #803300;
   --Arancia: #b24700;
@@ -59,18 +60,15 @@
 }
 .card > .status-bar {
   position: absolute;
-  background-color: yellow;
-  border-radius: 8px;
-  color: var(--darkArancia);
   font-size: 14px;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  right: 15px;
 }
 
 .info-box {
   text-align: center;
   padding: 25px;
-  margin-bottom: 30px;
+  margin-bottom: 58px;
   background-color: var(--white);
   border-radius: 20px;
   flex-grow: 1;

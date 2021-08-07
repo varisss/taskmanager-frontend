@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import API, { Project } from "../../API";
-import TaskList from "../Task/TaskList";
-
 // Components
 import Headbar from "../Headbar";
 import NoContent from "../NoContent";
 import AddButton from "../Buttons/AddButton";
 import ButtonOverlay from "../ButtonOverlay";
-
+import TaskList from "../Task/TaskList";
 // Image
 import BuddaMask from "../../images/budda_mask.png";
+//Styles
+import { Wrapper } from "../ContentPart.styles";
 
 interface ProjectProps {
   projectId: String;
@@ -39,12 +39,12 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   }, []);
   if (project) {
     return (
-      <>
+      <Wrapper>
         <Headbar header={project.name} />
-        <h1 className="project-title">Project Info</h1>
+        <h2 className="project-title">Project Info</h2>
         <div className="info-box">
-          <h3>Status: {project.status}</h3>
-          <h3>Started On: {new Date(project.start).toString().slice(0, 15)}</h3>
+          <p>Status: {project.status}</p>
+          <p>Started On: {new Date(project.start).toString().slice(0, 15)}</p>
           <p>{project.description}</p>
           {/* <h3>Project Members</h3>
           {project.members.map((member) => (
@@ -53,7 +53,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         </div>
         {tasks.length > 0 ? (
           <>
-            <h1 className="project-title">Tasks</h1>
+            {/* <h1 className="project-title">Tasks</h1> */}
             <TaskList
               projectId={projectId}
               tasks={tasks}
@@ -75,7 +75,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
           showOverlay={showButtonOverlay}
           callback={() => setShowButtonOverlay(false)}
         />
-      </>
+      </Wrapper>
     );
   } else {
     return (

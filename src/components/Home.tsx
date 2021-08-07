@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../API";
+//Components
+import Headbar from "./Headbar";
+import NoContent from "./NoContent";
 import ButtonOverlay from "./ButtonOverlay";
 import AddButton from "./Buttons/AddButton";
 import ProjectList from "./Project/ProjectList";
-
-//components
-import Headbar from "./Headbar";
-import NoContent from "./NoContent";
-
 // images
 import Budda from "../images/budda.png";
 

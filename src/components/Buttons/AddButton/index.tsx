@@ -1,8 +1,6 @@
 import React from "react";
-
 //icons
 import { IoIosAddCircle } from "react-icons/io";
-
 // Styles
 import { Wrapper } from "./AddButton.styles";
 

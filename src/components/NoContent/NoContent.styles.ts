@@ -12,14 +12,6 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    h2{
-
-    }
-
-    h3 {
-
-    }
 `;
 
 export const Image = styled.img``;
