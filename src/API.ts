@@ -115,7 +115,7 @@ export default {
     };
     try {
       await axios.post(
-        `http://localhost:4000/api/projects/${projectId}`,
+        `http://localhost:4000/api/projects/${projectId}/tasks`,
         taskData,
         config
       );

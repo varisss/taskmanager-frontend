@@ -21,9 +21,10 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
       <>
         <Headbar header="" />
         <h1 className="task-title">{task.name}</h1>
-        <div className="project">
-          <h3>Status: {task.status}</h3>
-          <h3>Started On: {new Date(task.start).toString().slice(0, 15)}</h3>
+        <div className="info-box">
+          <h3>{task.status}</h3>
+          <h3>Start: {new Date(task.start).toString().slice(0, 15)}</h3>
+          <h3>Deadline: {new Date(task.deadline).toString().slice(0, 15)}</h3>
           <p>{task.description}</p>
           <h3>Responsible Members</h3>
           {task.members.map((member) => (
@@ -32,7 +33,7 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
         </div>
         <h1 className="project-title">Updates</h1>
         {task.updates.map((update) => (
-          <div className="project">
+          <div className="card">
             <h2>{update}</h2>
             <p>Description here...</p>
             <p>Updated by ...</p>

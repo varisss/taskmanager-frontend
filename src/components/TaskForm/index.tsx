@@ -29,6 +29,7 @@ const TaskForm: React.FC<MemberProp> = ({ projectId, members }) => {
   const [selectMembers, setSelectMembers] = useState([] as Member[]);
   const [status, setStatus] = useState(statusOptions[0]);
   const [taskInfo, setTaskInfo] = useState('');
+  const [start, setStart] = useState('');
   const [deadline, setDeadline] = useState('');
 
   const handleSubmit = async () => {
@@ -44,10 +45,14 @@ const TaskForm: React.FC<MemberProp> = ({ projectId, members }) => {
       name: taskName,
       description: taskInfo,
       members: selectMembers,
-      status: status,
-      start: d,
+      status: status.value,
       deadline: deadline,
+      start: d,
     };
+
+    status.value === 'pending'
+      ? (sendingData.start = new Date(start))
+      : (sendingData.start = d);
 
     console.log('sending the created task');
     const response = await API.createTask(projectId, sendingData);
@@ -91,9 +96,28 @@ const TaskForm: React.FC<MemberProp> = ({ projectId, members }) => {
         <Select
           options={statusOptions}
           value={status}
-          onChange={(event) => setStatus(event!)}
+          onChange={(event) => {
+            setStatus(event!);
+          }}
           defaultValue={statusOptions[0]}
         />
+        {status.value === 'pending' ? (
+          <>
+            {' '}
+            <Label>start</Label>
+            <Input
+              type="date"
+              value={start}
+              onChange={(e) => setStart(e.target.value)}
+            />
+            <Label>deadLine</Label>
+            <Input
+              type="date"
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
+            />
+          </>
+        ) : null}
         {status.value === 'ongoing' ? (
           <>
             {' '}

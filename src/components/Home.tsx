@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import API from '../API';
-import ButtonOverlay from './ButtonOverlay';
-import AddButton from './Buttons/AddButton';
-import ProjectList from './Project/ProjectList';
+import React, { useEffect, useState } from "react";
+import API from "../API";
+import ButtonOverlay from "./ButtonOverlay";
+import AddButton from "./Buttons/AddButton";
+import ProjectList from "./Project/ProjectList";
 
 //components
-import Headbar from './Headbar';
-import NoContent from './NoContent';
+import Headbar from "./Headbar";
+import NoContent from "./NoContent";
 
 // images
-import Budda from '../images/budda.png';
+import Budda from "../images/budda.png";
 
 interface HomeProps {
   setProjectId: Function;
@@ -35,14 +35,15 @@ const Home: React.FC<HomeProps> = ({ setProjectId }) => {
   return (
     <>
       <Headbar header="dreamteam101" />
-      <h2 className="main-title">Recent Projects</h2>
-      {(projects.length > 0)
-        ? <ProjectList projects={projects} setProjectId={setProjectId} />
-        : <NoContent
+      {projects.length > 0 ? (
+        <ProjectList projects={projects} setProjectId={setProjectId} />
+      ) : (
+        <NoContent
           heading="Team Project shows here"
           subheading={`There are no projects\nin your team right now`}
-          image={Budda} />
-      }
+          image={Budda}
+        />
+      )}
       <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
       <ButtonOverlay
         showOverlay={showButtonOverlay}

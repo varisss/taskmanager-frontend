@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Member } from "../../API";
+
+// Styles
+import { Wrapper } from "./ProjectList.styles";
 
 interface ProjectListProps {
   projects: string[];
@@ -12,23 +16,30 @@ const ProjectList: React.FC<ProjectListProps> = ({
 }) => {
   //useEffect(() => setProjectId(''), []);
   return (
-    <>
+    <Wrapper>
+      <h2 className="main-title">Recent Projects</h2>
       {projects.map((proj: any) => (
-        <div className="project">
+        <div className="card">
           <Link
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: "none" }}
             to={`/${proj._id}`}
             onClick={() => {
               console.log(proj._id);
               setProjectId(proj._id);
             }}
           >
-            <h1>{proj.name}</h1>
+            <h2>{proj.name}</h2>
           </Link>
-          <p>{proj.status}</p>
+          <p>{proj.description}</p>
+          <div className="members-container">
+            {proj.members.map((member: Member) => (
+              <p>{member.name}</p>
+            ))}
+          </div>
+          <div className="status-bar">{proj.status}</div>
         </div>
       ))}
-    </>
+    </Wrapper>
   );
 };
 
