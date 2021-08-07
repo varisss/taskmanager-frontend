@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Member } from "../../API";
 
 // Styles
-import { Wrapper } from "./ProjectList.styles";
+import { Wrapper } from "../ContentPart.styles";
+import StatusBar from "../StatusBar";
 
 interface ProjectListProps {
   projects: string[];
@@ -14,6 +15,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
   projects,
   setProjectId,
 }) => {
+  let color = "red";
   //useEffect(() => setProjectId(''), []);
   return (
     <Wrapper>
@@ -36,7 +38,7 @@ const ProjectList: React.FC<ProjectListProps> = ({
               <p>{member.name}</p>
             ))}
           </div>
-          <div className="status-bar">{proj.status}</div>
+          <StatusBar className="status-bar" status={proj.status} />
         </div>
       ))}
     </Wrapper>
