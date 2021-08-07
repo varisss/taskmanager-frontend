@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import API, { Task } from "../../API";
+import React, { useState, useEffect } from 'react';
+import API, { Task } from '../../API';
+import { useHistory } from 'react-router';
 // Styles
-import Headbar from "../Headbar";
-import { Wrapper } from "../ContentPart.styles";
+import Headbar from '../Headbar';
+import { Wrapper } from '../ContentPart.styles';
 
 interface TaskProps {
   projectId: String;
@@ -11,6 +12,20 @@ interface TaskProps {
 
 const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
   const [task, setTask] = useState<Task>();
+  const history = useHistory();
+
+  const deleteTask = async (proj: String, task: String) => {
+    try {
+      await API.deleteTask(proj, task);
+      history.go(-1);
+      console.log('deleted');
+      return;
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+  };
+
   useEffect(() => {
     const fetchTask = async () => {
       const t: any = await API.fetchTask(projectId, taskId);
@@ -30,9 +45,25 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
           <p>{task.description}</p>
           <h3>Responsible Members</h3>
           {task.members.map((member) => (
-            <p>{member.name + ": " + member.role}</p>
+            <p>{member.name + ': ' + member.role}</p>
           ))}
         </div>
+        <button className="update-btn">
+          <p className="btn-text">Add Update</p>
+        </button>
+        <button className="update-btn">
+          <p className="btn-text">Update Task</p>
+        </button>
+        <button
+          className="delete-btn"
+          onClick={async () => {
+            if (window.confirm('Are you sure? This cannot be undone.')) {
+              await deleteTask(projectId, taskId);
+            }
+          }}
+        >
+          <p className="btn-text">Delete Task</p>
+        </button>
         <h1 className="project-title">Updates</h1>
         {task.updates.map((update) => (
           <div className="card">

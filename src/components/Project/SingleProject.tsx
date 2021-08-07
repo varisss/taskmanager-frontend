@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
-import API, { Project } from "../../API";
+import React, { useState, useEffect } from 'react';
+import API, { Project } from '../../API';
+import { useHistory } from 'react-router-dom';
+
 // Components
-import Headbar from "../Headbar";
-import NoContent from "../NoContent";
-import AddButton from "../Buttons/AddButton";
-import ButtonOverlay from "../ButtonOverlay";
-import TaskList from "../Task/TaskList";
+import Headbar from '../Headbar';
+import NoContent from '../NoContent';
+import AddButton from '../Buttons/AddButton';
+import ButtonOverlay from '../ButtonOverlay';
+import TaskList from '../Task/TaskList';
 // Image
-import BuddaMask from "../../images/budda_mask.png";
+import BuddaMask from '../../images/budda_mask.png';
 //Styles
-import { Wrapper } from "../ContentPart.styles";
+import { Wrapper } from '../ContentPart.styles';
 
 interface ProjectProps {
   projectId: String;
@@ -19,9 +21,22 @@ interface ProjectProps {
 const initialState: any = [];
 
 const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
+  const history = useHistory();
   const [project, setProject] = useState<Project>();
   const [tasks, setTasks] = useState(initialState);
   const [showButtonOverlay, setShowButtonOverlay] = useState(false);
+
+  const deleteProject = async (id: String) => {
+    try {
+      await API.deleteProject(id);
+      history.replace('/');
+      console.log('deleted');
+      return;
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+  };
 
   useEffect(() => {
     const fetchProj = async () => {
@@ -51,9 +66,21 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
             <p>{member.name + ': ' + member.role}</p>
           ))} */}
         </div>
+        <button className="update-btn">
+          <p className="btn-text">Update Project</p>
+        </button>
+        <button
+          className="delete-btn"
+          onClick={async () => {
+            if (window.confirm('Are you sure? This cannot be undone.')) {
+              await deleteProject(projectId);
+            }
+          }}
+        >
+          <p className="btn-text">Delete Project</p>
+        </button>
         {tasks.length > 0 ? (
           <>
-            {/* <h1 className="project-title">Tasks</h1> */}
             <TaskList
               projectId={projectId}
               tasks={tasks}
@@ -71,7 +98,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         <ButtonOverlay
           buttonText1="Task"
           buttonText2="Update Project"
-          link1={projectId + "/create-task"}
+          link1={projectId + '/create-task'}
           showOverlay={showButtonOverlay}
           callback={() => setShowButtonOverlay(false)}
         />
