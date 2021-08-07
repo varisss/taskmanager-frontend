@@ -29,7 +29,8 @@ export type Member = {
 export type Update = {
   name: string;
   description: string;
-  member: Member;
+  members: Member[];
+  status: string;
 };
 
 export default {
@@ -58,7 +59,7 @@ export default {
         config
       );
       return true;
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       return false;
     }
@@ -79,7 +80,7 @@ export default {
         config
       );
       return true;
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       return false;
     }
@@ -88,7 +89,7 @@ export default {
     try {
       await axios.delete(`http://localhost:4000/api/projects/${projectId}`);
       return true;
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       return false;
     }
@@ -120,7 +121,7 @@ export default {
         config
       );
       return true;
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       return false;
     }
@@ -142,7 +143,7 @@ export default {
         config
       );
       return true;
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       return false;
     }
@@ -153,7 +154,7 @@ export default {
         `http://localhost:4000/api/projects/${projectId}/tasks/${taskId}`
       );
       return true;
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       return false;
     }

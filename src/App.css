@@ -35,6 +35,15 @@
   margin: 20px 0px 30px 0px;
 }
 
+.curtain {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+}
+
 .card {
   position: relative;
   width: 100%;

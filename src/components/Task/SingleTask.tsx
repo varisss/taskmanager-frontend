@@ -53,7 +53,7 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
             <p className="btn-text">Add Update</p>
           </button>
           <button className="update-btn">
-            <p className="btn-text">Update Task</p>
+            <p className="btn-text">Edit Task</p>
           </button>
           <button
             className="delete-btn"

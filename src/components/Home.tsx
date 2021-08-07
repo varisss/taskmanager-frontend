@@ -17,23 +17,25 @@ const initialState: any = [];
 
 const Home: React.FC<HomeProps> = ({ setProjectId }) => {
   const [showButtonOverlay, setShowButtonOverlay] = useState(false);
-  //const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [projects, setProjects] = useState(initialState);
 
   useEffect(() => {
     const fetchProj = async () => {
+      setIsLoading(true);
       const proj: any = await API.fetchProjects();
       setProjects(proj);
+      setIsLoading(false);
     };
     fetchProj();
   }, []);
 
   console.log(projects);
-
+  if (isLoading) return <h1>Loading...</h1>;
   return (
     <>
       <Headbar header="dreamteam101" />
-      {projects.length > 0 ? (
+      {!isLoading && projects.length > 0 ? (
         <ProjectList projects={projects} setProjectId={setProjectId} />
       ) : (
         <NoContent

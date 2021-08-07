@@ -8,6 +8,7 @@ import NoContent from "../NoContent";
 import AddButton from "../Buttons/AddButton";
 import ButtonOverlay from "../ButtonOverlay";
 import TaskList from "../Task/TaskList";
+import EditForm from "../EditForm";
 // Image
 import BuddaMask from "../../images/budda_mask.png";
 //Styles
@@ -20,11 +21,16 @@ interface ProjectProps {
 
 const initialState: any = [];
 
+const handleEditSubmit = (event: any) => {
+  // TO DO: Link to API
+};
+
 const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   const history = useHistory();
   const [project, setProject] = useState<Project>();
   const [tasks, setTasks] = useState(initialState);
   const [showButtonOverlay, setShowButtonOverlay] = useState(false);
+  const [isediting, setIsediting] = useState(false);
 
   const deleteProject = async (id: String) => {
     try {
@@ -55,6 +61,14 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   if (project) {
     return (
       <>
+        {isediting ? (
+          <div
+            className="curtain"
+            onClick={() => {
+              setIsediting(false);
+            }}
+          />
+        ) : null}
         <Headbar header={project.name} />
         <Wrapper>
           <h2 className="project-title">Project Info</h2>
@@ -63,8 +77,8 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
             <p>Started On: {new Date(project.start).toString().slice(0, 15)}</p>
             <p>{project.description}</p>
           </div>
-          <button className="update-btn">
-            <p className="btn-text">Update Project</p>
+          <button className="update-btn" onClick={() => setIsediting(true)}>
+            <p className="btn-text">Edit Project</p>
           </button>
           <button
             className="delete-btn"
@@ -93,10 +107,14 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
         <ButtonOverlay
           buttonText1="Task"
-          buttonText2="Update Project"
           link1={projectId + "/create-task"}
           showOverlay={showButtonOverlay}
           callback={() => setShowButtonOverlay(false)}
+        />
+        <EditForm
+          isShow={isediting}
+          onSubmit={handleEditSubmit}
+          data={project}
         />
       </>
     );
@@ -108,5 +126,4 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
     );
   }
 };
-
 export default SingleProject;
