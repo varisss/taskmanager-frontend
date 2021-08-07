@@ -35,46 +35,43 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
   }, []);
   if (task) {
     return (
-      <>
+      <Wrapper>
         <Headbar header="" />
-        <Wrapper>
-          <h1 className="task-title">{task.name}</h1>
-          <div className="info-box">
-            <p>{task.status}</p>
-            <p>Start: {new Date(task.start).toString().slice(0, 15)}</p>
-            <p>Deadline: {new Date(task.deadline).toString().slice(0, 15)}</p>
-            <p>{task.description}</p>
-            <h3>Responsible Members</h3>
-            {task.members.map((member) => (
-              <p>{member.name + ": " + member.role}</p>
-            ))}
-          </div>
-          <button className="update-btn">
-            <p className="btn-text">Add Update</p>
-          </button>
-          <button className="update-btn">
-            <p className="btn-text">Edit Task</p>
-          </button>
-          <button
-            className="delete-btn"
-            onClick={async () => {
-              if (window.confirm("Are you sure? This cannot be undone.")) {
-                await deleteTask(projectId, taskId);
-              }
-            }}
-          >
-            <p className="btn-text">Delete Task</p>
-          </button>
-          <h1 className="project-title">Updates</h1>
-          {task.updates.map((update) => (
-            <div className="card">
-              <h2>{update}</h2>
-              <p>Description here...</p>
-              <p>Updated by ...</p>
-            </div>
+        <h1 className="task-title">{task.name}</h1>
+        <div className="info-box">
+          <p>{task.status}</p>
+          <p>Start: {new Date(task.start).toString().slice(0, 15)}</p>
+          <p>Deadline: {new Date(task.deadline).toString().slice(0, 15)}</p>
+          <p>{task.description}</p>
+          <h3>Responsible Members</h3>
+          {task.members.map((member) => (
+            <p>{member.name + ": " + member.role}</p>
           ))}
-        </Wrapper>
-      </>
+        </div>
+        <button className="update-btn">
+          <p className="btn-text">Add Update</p>
+        </button>
+        <button className="update-btn">
+          <p className="btn-text">Edit Task</p>
+        </button>
+        <button
+          className="delete-btn"
+          onClick={async () => {
+            if (window.confirm("Are you sure? This cannot be undone.")) {
+              await deleteTask(projectId, taskId);
+            }
+          }}
+        >
+          <p className="btn-text">Delete Task</p>
+        </button>
+        <h1 className="project-title">Updates</h1>
+        {task.updates.map((update: any) => (
+          <div className="card">
+            <p>{update.message}</p>
+            <h3>Updated by: {update.member}</h3>
+          </div>
+        ))}
+      </Wrapper>
     );
   } else {
     return (

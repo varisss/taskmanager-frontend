@@ -148,6 +148,28 @@ export default {
       return false;
     }
   },
+  addUpdate: async (
+    projectId: String,
+    taskId: String,
+    update: Object
+  ): Promise<any> => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      await axios.post(
+        `http://localhost:4000/api/projects/${projectId}/tasks/${taskId}/update`,
+        update,
+        config
+      );
+      return true;
+    } catch(err) {
+      console.log(err);
+      return false;
+    }
+  },
   deleteTask: async (projectId: String, taskId: String): Promise<any> => {
     try {
       await axios.delete(
