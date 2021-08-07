@@ -4,6 +4,7 @@ import { Member } from "../../API";
 
 // Styles
 import { Wrapper } from "../ContentPart.styles";
+import MemberIcon from "../MemberIcon";
 import StatusBar from "../StatusBar";
 
 interface ProjectListProps {
@@ -34,9 +35,9 @@ const ProjectList: React.FC<ProjectListProps> = ({
           </Link>
           <p>{proj.description}</p>
           <div className="members-container">
-            {proj.members.map((member: Member) => (
-              <p>{member.name}</p>
-            ))}
+            {proj.members.map((member: Member) =>
+              member.name ? <MemberIcon name={member.name} /> : null
+            )}
           </div>
           <StatusBar className="status-bar" status={proj.status} />
         </div>

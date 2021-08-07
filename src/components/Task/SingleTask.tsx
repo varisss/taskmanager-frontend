@@ -20,28 +20,30 @@ const SingleTask: React.FC<TaskProps> = ({ projectId, taskId }) => {
   }, []);
   if (task) {
     return (
-      <Wrapper>
+      <>
         <Headbar header="" />
-        <h1 className="task-title">{task.name}</h1>
-        <div className="info-box">
-          <p>{task.status}</p>
-          <p>Start: {new Date(task.start).toString().slice(0, 15)}</p>
-          <p>Deadline: {new Date(task.deadline).toString().slice(0, 15)}</p>
-          <p>{task.description}</p>
-          <h3>Responsible Members</h3>
-          {task.members.map((member) => (
-            <p>{member.name + ": " + member.role}</p>
-          ))}
-        </div>
-        <h1 className="project-title">Updates</h1>
-        {task.updates.map((update) => (
-          <div className="card">
-            <h2>{update}</h2>
-            <p>Description here...</p>
-            <p>Updated by ...</p>
+        <Wrapper>
+          <h1 className="task-title">{task.name}</h1>
+          <div className="info-box">
+            <h3>{task.status}</h3>
+            <h3>Start: {new Date(task.start).toString().slice(0, 15)}</h3>
+            <h3>Deadline: {new Date(task.deadline).toString().slice(0, 15)}</h3>
+            <p>{task.description}</p>
+            <h3>Responsible Members</h3>
+            {task.members.map((member) => (
+              <p>{member.name + ": " + member.role}</p>
+            ))}
           </div>
-        ))}
-      </Wrapper>
+          <h1 className="project-title">Updates</h1>
+          {task.updates.map((update) => (
+            <div className="card">
+              <h2>{update}</h2>
+              <p>Description here...</p>
+              <p>Updated by ...</p>
+            </div>
+          ))}
+        </Wrapper>
+      </>
     );
   } else {
     return (

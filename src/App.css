@@ -17,7 +17,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .main-title {
@@ -53,16 +53,14 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  align-items: center;
 }
 
-.card > .members-container > p {
-  margin-right: 8px;
-}
 .card > .status-bar {
   position: absolute;
   font-size: 14px;
-  bottom: 15px;
-  right: 15px;
+  bottom: 25px;
+  right: 25px;
 }
 
 .info-box {

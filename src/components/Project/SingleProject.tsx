@@ -39,43 +39,47 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   }, []);
   if (project) {
     return (
-      <Wrapper>
+      <>
         <Headbar header={project.name} />
-        <h2 className="project-title">Project Info</h2>
-        <div className="info-box">
-          <p>Status: {project.status}</p>
-          <p>Started On: {new Date(project.start).toString().slice(0, 15)}</p>
-          <p>{project.description}</p>
-          {/* <h3>Project Members</h3>
+        <Wrapper>
+          <h2 className="project-title">Project Info</h2>
+          <div className="info-box">
+            <p>Status: {project.status}</p>
+            <p>Started On: {new Date(project.start).toString().slice(0, 15)}</p>
+            <p>{project.description}</p>
+            {/* <h3>Project Members</h3>
           {project.members.map((member) => (
             <p>{member.name + ': ' + member.role}</p>
           ))} */}
-        </div>
-        {tasks.length > 0 ? (
-          <>
-            {/* <h1 className="project-title">Tasks</h1> */}
-            <TaskList
-              projectId={projectId}
-              tasks={tasks}
-              setTaskId={setTaskId}
+          </div>
+          {tasks.length > 0 ? (
+            <>
+              {/* <h1 className="project-title">Tasks</h1> */}
+              <TaskList
+                projectId={projectId}
+                tasks={tasks}
+                setTaskId={setTaskId}
+              />
+            </>
+          ) : (
+            <NoContent
+              heading="Project tasks show here"
+              subheading={`There are no tasks in this project right now`}
+              image={BuddaMask}
             />
-          </>
-        ) : (
-          <NoContent
-            heading="Project tasks show here"
-            subheading={`There are no tasks in this project right now`}
-            image={BuddaMask}
+          )}
+          <AddButton
+            callback={() => setShowButtonOverlay(!showButtonOverlay)}
           />
-        )}
-        <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
-        <ButtonOverlay
-          buttonText1="Task"
-          buttonText2="Update Project"
-          link1={projectId + "/create-task"}
-          showOverlay={showButtonOverlay}
-          callback={() => setShowButtonOverlay(false)}
-        />
-      </Wrapper>
+          <ButtonOverlay
+            buttonText1="Task"
+            buttonText2="Update Project"
+            link1={projectId + "/create-task"}
+            showOverlay={showButtonOverlay}
+            callback={() => setShowButtonOverlay(false)}
+          />
+        </Wrapper>
+      </>
     );
   } else {
     return (
