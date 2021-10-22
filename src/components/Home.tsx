@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import API from "../API";
+import React, { useEffect, useState } from 'react';
+import API from '../API';
 //Components
-import Headbar from "./Headbar";
-import NoContent from "./NoContent";
-import ButtonOverlay from "./ButtonOverlay";
-import AddButton from "./Buttons/AddButton";
-import ProjectList from "./Project/ProjectList";
+import Headbar from './Headbar';
+import NoContent from './NoContent';
+import ButtonOverlay from './ButtonOverlay';
+import AddButton from './Buttons/AddButton';
+import ProjectList from './Project/ProjectList';
 // images
-import Budda from "../images/budda.png";
+import Budda from '../images/budda.png';
 
 interface HomeProps {
   setProjectId: Function;

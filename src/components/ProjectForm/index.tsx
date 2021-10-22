@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import Select from "react-select";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Select from 'react-select';
 // Styles
-import { Wrapper, Content, Label, Input, TextArea } from "./ProjectFrom.styles";
+import { Wrapper, Content, Label, Input, TextArea } from './ProjectFrom.styles';
 // Components
-import NormalButton from "../Buttons/NormalButton";
+import NormalButton from '../Buttons/NormalButton';
 // Helpers
-import { hashCode } from "../../helper";
-import API, { Member } from "../../API";
+import { hashCode } from '../../helper';
+import API, { Member } from '../../API';
 
 interface MemberProp {
   members: Member[];
 }
 
 const ProjectForm: React.FC<MemberProp> = ({ members }) => {
-  const [projectName, setProjectName] = useState("");
+  const [projectName, setProjectName] = useState('');
   const [selectMembers, setSelectMembers] = useState([] as Member[]);
-  const [projectInfo, setProjectInfo] = useState("");
+  const [projectInfo, setProjectInfo] = useState('');
 
   const history = useHistory(); // for backing to Home page
 
   const handleSubmit = async () => {
     // If project name is not type doesn't trigger API post
-    if (projectName === "") {
+    if (projectName === '') {
       /* TO DO: Show error message to user */
-      window.alert("Please try project name");
+      window.alert('Please try project name');
       return;
     }
     const d = new Date();
@@ -33,13 +33,13 @@ const ProjectForm: React.FC<MemberProp> = ({ members }) => {
       description: projectInfo,
       members: selectMembers,
       start: d,
-      status: "pending",
+      status: 'pending',
     };
 
-    console.log("sending the created project");
+    console.log('sending the created project');
     const response = await API.createProject(sendingData);
     console.log(response);
-    history.replace("/");
+    history.replace('/');
   };
 
   return (

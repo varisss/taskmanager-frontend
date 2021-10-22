@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import API, { Project } from "../../API";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import API, { Project } from '../../API';
+import { useHistory } from 'react-router-dom';
 
 // Components
-import Headbar from "../Headbar";
-import NoContent from "../NoContent";
-import AddButton from "../Buttons/AddButton";
-import ButtonOverlay from "../ButtonOverlay";
-import TaskList from "../Task/TaskList";
-import EditForm from "../EditForm";
+import Headbar from '../Headbar';
+import NoContent from '../NoContent';
+import AddButton from '../Buttons/AddButton';
+import ButtonOverlay from '../ButtonOverlay';
+import TaskList from '../Task/TaskList';
+import EditForm from '../EditForm';
 // Image
-import BuddaMask from "../../images/budda_mask.png";
+import BuddaMask from '../../images/budda_mask.png';
 //Styles
-import { Wrapper } from "../ContentPart.styles";
+import { Wrapper } from '../ContentPart.styles';
 
 interface ProjectProps {
   projectId: String;
@@ -35,8 +35,8 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
   const deleteProject = async (id: String) => {
     try {
       await API.deleteProject(id);
-      history.replace("/");
-      console.log("deleted");
+      history.replace('/');
+      console.log('deleted');
       return;
     } catch (err) {
       console.log(err);
@@ -83,7 +83,7 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
           <button
             className="delete-btn"
             onClick={async () => {
-              if (window.confirm("Are you sure? This cannot be undone.")) {
+              if (window.confirm('Are you sure? This cannot be undone.')) {
                 await deleteProject(projectId);
               }
             }}
@@ -107,14 +107,15 @@ const SingleProject: React.FC<ProjectProps> = ({ projectId, setTaskId }) => {
         <AddButton callback={() => setShowButtonOverlay(!showButtonOverlay)} />
         <ButtonOverlay
           buttonText1="Task"
-          link1={projectId + "/create-task"}
+          link1={projectId + '/create-task'}
           showOverlay={showButtonOverlay}
           callback={() => setShowButtonOverlay(false)}
         />
         <EditForm
+          projectId={projectId}
           isShow={isediting}
-          onSubmit={handleEditSubmit}
           data={project}
+          setIsediting={setIsediting}
         />
       </>
     );

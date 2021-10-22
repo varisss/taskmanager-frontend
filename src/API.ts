@@ -59,7 +59,7 @@ export default {
         config
       );
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
@@ -80,16 +80,17 @@ export default {
         config
       );
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
   },
   deleteProject: async (projectId: String): Promise<any> => {
     try {
+      console.log(projectId);
       await axios.delete(`http://localhost:4000/api/projects/${projectId}`);
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
@@ -121,7 +122,7 @@ export default {
         config
       );
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
@@ -143,7 +144,7 @@ export default {
         config
       );
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
@@ -165,7 +166,7 @@ export default {
         config
       );
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
@@ -176,7 +177,7 @@ export default {
         `http://localhost:4000/api/projects/${projectId}/tasks/${taskId}`
       );
       return true;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return false;
     }
